@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require 'thor'
+require 'utils/os'
+require 'bashrc/bashrc'
+
+module CommandAliasCLI
+	class CommandAlias < Thor
+		desc "apply", "Apply useful alias commands"
+		def apply
+			BashRC.create_bash_alias
+		end
+
+		# desc "generate SUBCOMMAND ...ARGS", "Generate other template"
+		# subcommand "generate", Generate
+	end
+end
+
+CommandAliasCLI::CommandAlias.start(ARGV)

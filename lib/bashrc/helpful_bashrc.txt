@@ -1,0 +1,17 @@
+# git alias
+alias gd="git diff"
+alias ga="git add"
+alias gs="git status"
+alias gco="git checkout"
+alias gcm="git commit"
+alias gcm-am="git commit --amend --no-edit"
+alias gl="git log --oneline"
+alias gb="git branch"
+alias grc="git rebase --continue"
+
+# Project Experience
+alias gue="git pull origin master"
+alias commit_name="echo Commit time: $(date '+%H:%M:%S   %d/%m/%y') in $(hostname)"
+gpm() {
+  gs;ga .;gcm -m "$1 $(commit_name)";git push origin master
+}
