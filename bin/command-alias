@@ -3,16 +3,19 @@
 require 'thor'
 require 'utils/os'
 require 'bashrc/bashrc'
+require 'etc'
 
 module CommandAliasCLI
 	class CommandAlias < Thor
-		desc "apply", "Apply useful alias commands"
-		def apply
+		desc "install", "Install useful alias commands"
+		def install
 			BashRC.create_bash_alias
 		end
 
-		# desc "generate SUBCOMMAND ...ARGS", "Generate other template"
-		# subcommand "generate", Generate
+		desc "apply", "Apply useful alias commands, we run this when alias is no longer active"
+		def apply
+			system("source #{Etc.getpwuid.dir}/.bashrc")
+		end
 	end
 end
 
